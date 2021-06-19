@@ -22,7 +22,13 @@ export default function UserForm() {
 
     const { loading, createUser } = useUserContext()
 
-
+    const resetForm = () => {
+        setName("")
+        setLastName("")
+        setAge("")
+        setEmail("")
+        setLinkedinProfile("")
+    }
 
     const onKeyAgeDown = (e) => {
         const allowedKeys = ["Backspace", "Enter", "Delete", "ArrowRight", "ArrowLeft", "Tab"];
@@ -38,9 +44,14 @@ export default function UserForm() {
 
         const newUser = { name, lastName, age, email, linkedinProfile }
         if (isValidUser(newUser)) {
+            try {
+                createUser(newUser)
+                resetForm()
+                return
+            } catch (error) {
+                console.error({ error })
+            }
 
-            createUser(newUser)
-            return
         }
 
         setCheckError(true)
