@@ -5,9 +5,9 @@ export const eachUserFieldIsDefinedAndNotFalsy = (user) => {
 };
 
 export const isValidAge = (age) =>
-  Number.isInteger(age) && age > 16 && age < 120;
+  !isNaN(parseInt(age)) && parseInt(age) > 16 && parseInt(age) < 120;
 
-const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]{2,6})+$/gm;
+const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]{2,6})+$/;
 
 export const isValidEmail = (email) => emailRegex.test(email);
 
@@ -19,5 +19,5 @@ export const isValidLinkedinURL = (url) => linkedinURLRegex.test(url);
 export const isValidUser = (user) =>
   eachUserFieldIsDefinedAndNotFalsy(user) &&
   isValidAge(user.age) &&
-  isValidEmail(user.emai) &&
+  isValidEmail(user.email) &&
   isValidLinkedinURL(user.linkedinProfile);
