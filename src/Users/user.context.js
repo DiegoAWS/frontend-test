@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
-import { createUser, listAllUser } from "./user.service";
+import { storeUser, listAllUser } from "./user.service";
 
 const UserContext = createContext();
 
@@ -7,24 +7,39 @@ function UserContextProvider(props) {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  const getUsers = async () => {
+    setLoading(true);
+    const newUsers = await listAllUser();
+    setUsers(newUsers);
+    setLoading(false);
+  };
+  const createUser = async (user) => {
+    setLoading(true);
+
+    const tempUser = {
+      ...user,
+      id: "temporary_id",
+      created_at: Date.now(),
+    };
+
+    setUsers([...users, tempUser]); // Immediately Update list
+
+    try {
+      const newUser = await storeUser(user);
+      setUsers([...users, newUser]);
+    } catch (error) {}
+
+    setLoading(false);
+  };
+
   const contextValue = {
     users,
     loading,
-    getUsers: async () => {
-      setLoading(true);
-      const newUsers = await listAllUser();
-      setUsers(newUsers);
-      setLoading(false);
-    },
-    createUser: async (user) => {
-      setLoading(true);
-      const newUser = await createUser(user);
-      setUsers([...users, newUser]);
-      setLoading(false);
-    },
+    getUsers,
+    createUser,
   };
 
-  return <UserContext.Provider value={contextValue} {...props}/>;
+  return <UserContext.Provider value={contextValue} {...props} />;
 }
 
 function useUserContext() {

@@ -13,7 +13,7 @@ export default function UserList() {
     }, [])
 
     return (
-        <div>
+        <div style={{padding:'0 2rem'}}>
             {users.map(item =>
                 <div key={item.id}>
                     <div style={{ margin: '2rem 0' }}>

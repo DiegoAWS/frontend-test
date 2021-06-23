@@ -6,7 +6,7 @@ import { UserForm, UserList } from '../components'
 export default function UserPage() {
     return (
         <UserContextProvider>
-            <Grid container spacing={3}>
+            <Grid container spacing={3} style={{width:'100%'}}>
                 <Grid item sm={6} xs={12} >
                     <UserForm />
                 </Grid>

@@ -1,7 +1,7 @@
-import axios from "axios";
-import { isValidUser } from "../helpers/validators";
+import axios from 'axios';
+import { isValidUser } from '../helpers/validators';
 
-const BACKEND_URL = "http://localhost:3001";
+const BACKEND_URL = 'https://nest-test-backend.herokuapp.com'; //http://localhost:5000';
 
 const axiosInstance = axios.create({
   baseURL: BACKEND_URL,
@@ -10,7 +10,7 @@ const axiosInstance = axios.create({
 export const listAllUser = async () => {
   try {
     return await (
-      await axiosInstance.get("/users")
+      await axiosInstance.get('/users')
     ).data;
   } catch (error) {
     console.error({ error });
@@ -18,14 +18,14 @@ export const listAllUser = async () => {
   }
 };
 
-export const createUser = async (user) => {
+export const storeUser = async (user) => {
   if (!isValidUser(user))
     // Protect integrity of DTO
     return [];
 
   try {
     return await (
-      await axiosInstance.post("/users", user)
+      await axiosInstance.post('/users', user)
     ).data;
   } catch (error) {
     console.error({ error });
