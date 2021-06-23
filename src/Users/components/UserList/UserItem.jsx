@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import styled from 'styled-components';
 import avatarImage from '../../../assets/imgs/avatarImage.png'
 import { useUserContext } from '../../user.context';
+import { Hidden } from '@material-ui/core';
 
 
 const StyledCard = styled.div`
@@ -65,10 +66,11 @@ export default function UserItem({ user }) {
                     </IconButton>
                 </HeaderCard>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <div style={{ width: '20%', margin: '1rem 2rem 0 0' }}>
-                        <img alt='' src={avatarImage} style={{ width: '100%' }} />
-                    </div>
-
+                    <Hidden only="sm">
+                        <div style={{ width: '20%', margin: '1rem 2rem 0 0' }}>
+                            <img alt='' src={avatarImage} style={{ width: '100%' }} />
+                        </div>
+                    </Hidden>
                     <div>
                         <Typography variant='body2' color='textSecondary' component='div' >
                             {'Age: ' + user.age}

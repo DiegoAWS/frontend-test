@@ -1,8 +1,11 @@
 import React, { createContext, useContext, useState } from "react";
-import { sortByCreateDate } from "../helpers/sortByCreateDate";
 import { storeUser, listAllUser, deleteUser } from "./user.service";
 
 const UserContext = createContext();
+
+const sortByCreateDate = (listUser) => {
+  return listUser.sort((item, item2) => item.created_at > item2.created_at);
+ };
 
 function UserContextProvider(props) {
   const [users, setUsers] = useState([]);
@@ -11,13 +14,17 @@ function UserContextProvider(props) {
   const storeUsers = (users) => {
     setUsers(sortByCreateDate(users));
   };
+
   const getUsers = async () => {
     const newUsers = await listAllUser();
     storeUsers(newUsers);
   };
+
   const createUser = async (user) => {
     setLoading(true);
+    
     const savedUsers = [...users];
+
     const tempUser = {
       ...user,
       id: "temporary_id",
