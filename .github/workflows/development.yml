@@ -33,7 +33,7 @@ jobs:
           name: build
           path: build
   deploy:
-    name: Deploy to Firebase Hosting
+    name: Deploy to Netlify Hosting
     needs: build
     runs-on: ubuntu-latest
     steps:
