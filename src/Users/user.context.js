@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
-import { storeUser, listAllUser } from "./user.service";
+import { storeUser, listAllUser,deleteUser } from "./user.service";
 
 const UserContext = createContext();
 
@@ -8,10 +8,9 @@ function UserContextProvider(props) {
   const [loading, setLoading] = useState(false);
 
   const getUsers = async () => {
-    setLoading(true);
     const newUsers = await listAllUser();
     setUsers(newUsers);
-    setLoading(false);
+
   };
   const createUser = async (user) => {
     setLoading(true);
@@ -32,11 +31,26 @@ function UserContextProvider(props) {
     setLoading(false);
   };
 
+  const removeUser= async(id)=>{
+    const savedUsers=[...users]
+    const tempUsers=users.filter(item=>item.id!==id)
+    setUsers(tempUsers)
+    try {
+      console.log(id)
+      const newUser = await deleteUser(id);
+      console.log(newUser)
+      // setUsers([...users, newUser]);
+    } catch (error) {
+      setUsers(savedUsers)
+    }
+
+  }
   const contextValue = {
     users,
     loading,
     getUsers,
     createUser,
+    removeUser
   };
 
   return <UserContext.Provider value={contextValue} {...props} />;
@@ -47,9 +61,9 @@ function useUserContext() {
   if (context === undefined) {
     throw new Error("useUserContext must be used within a UserContextProvider");
   }
-  const { users, loading, getUsers, createUser } = context;
+  const { users, loading, getUsers, createUser , removeUser} = context;
 
-  return { users, loading, getUsers, createUser };
+  return { users, loading, getUsers, createUser , removeUser};
 }
 
 export { UserContextProvider, useUserContext };

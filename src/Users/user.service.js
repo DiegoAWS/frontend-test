@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { isValidUser } from '../helpers/validators';
 
-const BACKEND_URL = 'https://nest-test-backend.herokuapp.com'; //http://localhost:5000';
+// const BACKEND_URL = 'https://nest-test-backend.herokuapp.com'; 
+const BACKEND_URL ='http://localhost:5000';
 
 const axiosInstance = axios.create({
   baseURL: BACKEND_URL,
@@ -32,3 +33,13 @@ export const storeUser = async (user) => {
     return [];
   }
 };
+
+export const deleteUser= async (id)=>{
+  try {
+    return await ( await axiosInstance.delete('/users/'+id)).data
+  } catch (error) {
+
+    return []
+  }
+  
+}

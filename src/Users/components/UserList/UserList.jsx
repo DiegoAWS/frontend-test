@@ -4,7 +4,7 @@ import { useUserContext } from '../../user.context'
 import UserItem from './UserItem'
 
 export default function UserList() {
-    const { users, getUsers } = useUserContext()
+    const { users, getUsers ,} = useUserContext()
 
     useEffect(() => {
         getUsers()
