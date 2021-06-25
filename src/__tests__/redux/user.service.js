@@ -1,14 +1,10 @@
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 import { BACKEND_URL, deleteUser, listAllUser, storeUser } from '../../redux/users/services';
+import { mockUser } from '../../assets/mockUser';
 
-const mockUser = {
-    name: 'John',
-    lastName: 'Doe',
-    age: 25,
-    email: 'john.doe@gmail.com',
-    linkedinProfile: 'https://cl.linkedin.com/company/john-doe',
-  };
+
+
 const server = setupServer(
   rest.get(BACKEND_URL+'/users', (req, res, ctx) => {
     return res(ctx.json([mockUser]));
