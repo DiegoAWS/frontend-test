@@ -1,7 +1,7 @@
-import axios from 'axios';
-import { isValidUser } from '../helpers/validators';
+import axios from "axios";
+import { isValidUser } from "../helpers/validators";
 
-const BACKEND_URL = 'https://nest-test-backend.herokuapp.com'; 
+export const BACKEND_URL = "https://nest-test-backend.herokuapp.com";
 
 const axiosInstance = axios.create({
   baseURL: BACKEND_URL,
@@ -9,8 +9,8 @@ const axiosInstance = axios.create({
 
 export const listAllUser = async () => {
   try {
-    return await (
-      await axiosInstance.get('/users')
+    return  (
+      await axiosInstance.get("/users")
     ).data;
   } catch (error) {
     console.error({ error });
@@ -21,24 +21,22 @@ export const listAllUser = async () => {
 export const storeUser = async (user) => {
   if (!isValidUser(user))
     // Protect integrity of DTO
-    return [];
+    return null;
 
   try {
-    return await (
-      await axiosInstance.post('/users', user)
-    ).data;
+    return (await axiosInstance.post("/users", user)).data;
   } catch (error) {
     console.error({ error });
-    return [];
+    return null;
   }
 };
 
-export const deleteUser= async (id)=>{
+export const deleteUser = async (id) => {
   try {
-    return await ( await axiosInstance.delete('/users/'+id)).data
+    return await (
+      await axiosInstance.delete("/users/" + id)
+    ).data;
   } catch (error) {
-
-    return []
+    return [];
   }
-  
-}
+};
