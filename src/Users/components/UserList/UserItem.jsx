@@ -62,7 +62,7 @@ export default function UserItem({ user }) {
                         color="secondary"
                         aria-label="delete icon"
                         onClick={deleteHandler}
-                        disabled={user.id === "temporary_id"}
+                        disabled={user.id === "new_user"}
                     >
                         <DeleteIcon />
                     </IconButton>

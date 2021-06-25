@@ -17,6 +17,7 @@ export const getUsers = () => {
 };
 
 export const saveFetchedUsers = ({ users }) => {
+  if (!Array.isArray(users)) throw new Error("Data Malformed");
   return {
     type: GET_USERS_SUCCESS,
     users,
@@ -29,14 +30,15 @@ export const errorFetchingUsers = () => {
   };
 };
 
-export const saveUsers = ({user}) => {
+export const saveUsers = ({ user }) => {
   return {
     type: SAVE_USER_REQUEST,
-    user
+    user,
   };
 };
 
 export const saveSavedUser = ({ user }) => {
+  if(user.id?.length<36) throw new Error("Data Malformed");
   return {
     type: SAVE_USER_SUCCESS,
     user,
@@ -58,7 +60,7 @@ export const deleteUser = ({ id }) => {
 
 export const updateDeletedUsers = () => {
   return {
-    type: DELETE_USER_SUCCESS
+    type: DELETE_USER_SUCCESS,
   };
 };
 

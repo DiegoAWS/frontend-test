@@ -35,7 +35,7 @@ export function* saveUser({ user }) {
 export function* removeUser({ id }) {
   try {
     const data = yield call(deleteUser, id);
-    
+
     if (data !== 200) throw new Error();
 
     yield put(updateDeletedUsers());
