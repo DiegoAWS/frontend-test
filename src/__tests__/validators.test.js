@@ -4,7 +4,7 @@ import {
   isValidEmail,
   isValidLinkedinURL,
   isValidUser,
-} from "./validators";
+} from "../helpers/validators";
 
 describe("testing validators functions", () => {
   const mockUser0 = {
@@ -24,10 +24,11 @@ describe("testing validators functions", () => {
 
   const failUser0 = { ...mockUser0, name: null };
   const failUser1 = { ...mockUser0, lastName: undefined };
+  const failUser2 = { ...mockUser0, lastName: "ed" };
 
   it("testing eachUserFieldIsDefinedAndNotFalsy", () => {
     const shouldPassTheValidation = [mockUser0, mockUser1];
-    const shouldFailTheValidation = [{}, failUser0, failUser1];
+    const shouldFailTheValidation = [{}, failUser0, failUser1,failUser2];
 
     shouldPassTheValidation.forEach((item) => {
       expect(eachUserFieldIsDefinedAndNotFalsy(item)).toBeTruthy();

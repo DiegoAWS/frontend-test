@@ -1,5 +1,9 @@
 import { UserPage } from "./Users";
 import { createGlobalStyle } from "styled-components";
+import { Provider } from "react-redux";
+import store from "./redux/store";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -13,10 +17,12 @@ const GlobalStyle = createGlobalStyle`
 
 function App() {
   return (
-    <>
+    
+    <Provider store={store}>
       <GlobalStyle />
       <UserPage />
-    </>
+      <ToastContainer />
+    </Provider>
   );
 }
 

@@ -2,12 +2,13 @@ import React, { useState } from 'react'
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { isValidAge, isValidEmail, isValidLinkedinURL, isValidUser } from '../../../helpers/validators';
-import { useUserContext } from '../../user.context';
 import LoadingIconGif from '../../../assets/imgs/loadingIcon.gif'
 import styled from 'styled-components';
 import { mainGradient } from '../mainGradient';
+import { useDispatch, useSelector } from 'react-redux';
+import { saveUsers } from '../../../redux/users/actions';
 
-const FormWrapper=styled.div`
+const FormWrapper = styled.div`
     margin:2rem;
     background-color: #d2d5ff;
     background-image: ${mainGradient};
@@ -32,7 +33,9 @@ export default function UserForm() {
     const [linkedinProfile, setLinkedinProfile] = useState('')
     const [checkError, setCheckError] = useState(false)
 
-    const { loading, createUser } = useUserContext()
+
+    const dispatch = useDispatch()
+    const loading = useSelector((state) => state.users.loadingOnSave)
 
     const resetForm = () => {
         setName('')
@@ -54,10 +57,11 @@ export default function UserForm() {
 
     const submitHandler = async () => {
 
-        const newUser = { name, lastName, age, email, linkedinProfile }
-        if (isValidUser(newUser)) {
+        const user = { name, lastName, age, email, linkedinProfile }
+        console.log(user)
+        if (isValidUser(user)) {
             try {
-                createUser(newUser)
+                dispatch(saveUsers({ user }))
                 resetForm()
                 return
             } catch (error) {
@@ -78,15 +82,15 @@ export default function UserForm() {
             <CustomTextField
                 value={name}
                 onChange={e => setName(e.target.value)}
-                error={checkError && !name}
-                helperText={checkError && !name && 'Name is mandatory'}
+                error={checkError && (!name || name.length < 3)}
+                helperText={checkError && (!name || name.length < 3) && (name.length < 3 ? 'Name is too short' : 'Name is mandatory')}
                 label='Name' />
 
             <CustomTextField
                 value={lastName}
                 onChange={e => setLastName(e.target.value)}
-                error={checkError && !lastName}
-                helperText={checkError && !lastName && 'Last Name is mandatory'}
+                error={checkError && (!lastName || lastName.length < 3)}
+                helperText={checkError && (!lastName || lastName.length < 3) && (lastName.length < 3 ? 'Last Name is too short' : 'Last Name is mandatory')}
                 label='Last Name' />
 
             <CustomTextField
@@ -117,7 +121,7 @@ export default function UserForm() {
                     variant='contained'
                     color='primary'
                     onClick={submitHandler}
-                    // disabled={loading}
+                    disabled={loading}
                     startIcon={loading && <LoadingIcon />}
                 >Submit </Button>
             </div>

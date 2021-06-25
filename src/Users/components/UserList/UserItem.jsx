@@ -4,9 +4,10 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import styled from 'styled-components';
 import avatarImage from '../../../assets/imgs/avatarImage.png'
-import { useUserContext } from '../../user.context';
 import { Hidden } from '@material-ui/core';
 import { mainGradient } from '../mainGradient';
+import { deleteUser } from '../../../redux/users/actions';
+import { useDispatch } from 'react-redux';
 
 
 const StyledCard = styled.div`
@@ -46,9 +47,9 @@ const HeaderCard = styled.div`
 
 export default function UserItem({ user }) {
 
-    const { removeUser } = useUserContext()
+    const dispatch = useDispatch()
     const deleteHandler = () => {
-        removeUser(user.id)
+        dispatch(deleteUser({id:user.id}))
     }
     const created_at = new Date(parseInt(user.created_at)).toJSON().slice(0, 10)
 

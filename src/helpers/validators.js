@@ -1,7 +1,15 @@
 export const eachUserFieldIsDefinedAndNotFalsy = (user) => {
   const { name, lastName, age, email, linkedinProfile } = user;
 
-  return !!name && lastName && age && email && linkedinProfile;
+  return (
+    !!name &&
+    name.length > 2 &&
+    lastName &&
+    lastName.length > 2 &&
+    age &&
+    email &&
+    linkedinProfile
+  );
 };
 
 export const isValidAge = (age) =>

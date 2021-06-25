@@ -1,7 +1,8 @@
 
 import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components'
-import { useUserContext } from '../../user.context'
+import { getUsers } from '../../../redux/users/actions';
 import UserItem from './UserItem'
 
 const ListWrapper=styled.div`
@@ -13,10 +14,10 @@ const ListWrapper=styled.div`
 `;
 
 export default function UserList() {
-    const { users, getUsers ,} = useUserContext()
-
+    const dispatch = useDispatch()
+    const users = useSelector((state) => state.users.users)
     useEffect(() => {
-        getUsers()
+        dispatch(getUsers())
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
