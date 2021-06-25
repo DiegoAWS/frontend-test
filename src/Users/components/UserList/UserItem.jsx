@@ -6,11 +6,12 @@ import styled from 'styled-components';
 import avatarImage from '../../../assets/imgs/avatarImage.png'
 import { useUserContext } from '../../user.context';
 import { Hidden } from '@material-ui/core';
+import { mainGradient } from '../mainGradient';
 
 
 const StyledCard = styled.div`
-    background-color: #f6f0c4;
-    background-image: linear-gradient(315deg, #f6f0c4 0%, #d99ec9 74%);
+    background-color: #d2d5ff;
+    background-image: ${mainGradient};
     border-radius:10px;
     transition: .3s;
     border: 1px solid transparent;

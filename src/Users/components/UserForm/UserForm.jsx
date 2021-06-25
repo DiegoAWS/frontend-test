@@ -5,11 +5,12 @@ import { isValidAge, isValidEmail, isValidLinkedinURL, isValidUser } from '../..
 import { useUserContext } from '../../user.context';
 import LoadingIconGif from '../../../assets/imgs/loadingIcon.gif'
 import styled from 'styled-components';
+import { mainGradient } from '../mainGradient';
 
 const FormWrapper=styled.div`
     margin:2rem;
-    background-color: #f6f0c4;
-    background-image: linear-gradient(315deg, #f6f0c4 0%, #d99ec9 74%);
+    background-color: #d2d5ff;
+    background-image: ${mainGradient};
     border-radius:1rem;
     padding:1rem;
     color:white;

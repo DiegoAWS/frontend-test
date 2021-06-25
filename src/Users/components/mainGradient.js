@@ -1,0 +1,1 @@
+export const mainGradient='linear-gradient(0deg,#c7c7c7,#d2d5ff,#d2d5ff, #c7c7c7)';
