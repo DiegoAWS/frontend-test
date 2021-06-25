@@ -1,6 +1,6 @@
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
-import { BACKEND_URL, deleteUser, listAllUser, storeUser } from './user.service';
+import { BACKEND_URL, deleteUser, listAllUser, storeUser } from '../../redux/users/services';
 
 const mockUser = {
     name: 'John',
@@ -34,6 +34,6 @@ describe('testing user service', () => {
     expect(await storeUser(mockUser)).toStrictEqual(mockUser);
   })
   it('testing deleteUser',async ()=>{
-      expect(await deleteUser('test_id')).toBe('test_id')
+      expect(await deleteUser('test_id')).toBe(200)
   })
 });
