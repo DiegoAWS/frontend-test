@@ -1,4 +1,4 @@
-# Frontend Test Code Project for DSPOT [![example workflow](https://github.com/DiegoAWS/frontend-test/actions/workflows/development.yml/badge.svg)](https://dspot-test.netlify.app//) [![GitHub last commit](https://img.shields.io/github/last-commit/DiegoAWS/frontend-test.svg?style=flat)](https://GitHub.com/DiegoAWS/frontend-test)
+# Frontend Test Code Project for DSPOT [![example workflow](https://github.com/DiegoAWS/frontend-test/actions/workflows/development.yml/badge.svg)](https://dspot-test.netlify.app) [![GitHub last commit](https://img.shields.io/github/last-commit/DiegoAWS/frontend-test.svg?style=flat)](https://GitHub.com/DiegoAWS/frontend-test)
 
 ## Structure
 
@@ -6,7 +6,7 @@
 - [Runing the project locally](#runing-the-project-locally)
 - [Testing](#testing)
 
-You can see the live project at [this firebase hosting.](https://dspot-test.netlify.app//)
+You can see the live project at [this firebase hosting.](https://dspot-test.netlify.app)
 
 Test running proccess, to reproduce test locally follow instructions [here](#testing)
 
@@ -16,7 +16,7 @@ Test running proccess, to reproduce test locally follow instructions [here](#tes
 
 ## Deployed Project
 
-To see this project you could visit https://dspot-test.netlify.app// or you could clone it and run it locally.
+To see this project you could visit https://dspot-test.netlify.app or you could clone it and run it locally.
 <br> <br><br>
 
 [<img alt="Go to Up icon" align="right" src="src/assets/imgs/goUpIcon.svg" width="20px" />](#readme)
