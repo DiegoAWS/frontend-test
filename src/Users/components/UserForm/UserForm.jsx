@@ -22,7 +22,7 @@ const CustomTextField = (props) => {
     return <TextField {...props} variant='outlined' fullWidth margin='normal' />
 }
 const LoadingIcon = () => {
-    return <img alt='' src={LoadingIconGif} width='20px' height='20px' />
+    return <img alt='LoadingIcon' src={LoadingIconGif} width='20px' height='20px' />
 }
 
 export default function UserForm() {
@@ -58,15 +58,13 @@ export default function UserForm() {
     const submitHandler = async () => {
 
         const user = { name, lastName, age, email, linkedinProfile }
-        console.log(user)
+
         if (isValidUser(user)) {
-            try {
-                dispatch(saveUsers({ user }))
-                resetForm()
-                return
-            } catch (error) {
-                console.error({ error })
-            }
+
+            dispatch(saveUsers({ user }))
+            resetForm()
+            return
+
 
         }
 
