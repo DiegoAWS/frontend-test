@@ -1,70 +1,83 @@
-# Getting Started with Create React App
+# Frontend Test Code Project for DSPOT [![example workflow](https://github.com/DiegoAWS/frontend-test/actions/workflows/development.yml/badge.svg)](https://dspot-test.netlify.app//) [![GitHub last commit](https://img.shields.io/github/last-commit/DiegoAWS/frontend-test.svg?style=flat)](https://GitHub.com/DiegoAWS/frontend-test)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Structure
 
-## Available Scripts
+- [Deployed Project](#deployed-project)
+- [Runing the project locally](#runing-the-project-locally)
+- [Testing](#testing)
 
-In the project directory, you can run:
+You can see the live project at [this firebase hosting.](https://dspot-test.netlify.app//)
 
-### `yarn start`
+Test running proccess, to reproduce test locally follow instructions [here](#testing)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+[<img alt="Landing Background" src="src/assets/imgs/test-running.gif" width="100%"/>](#testing)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+[<img alt="Go to Up icon" align="right" src="src/assets/imgs/goUpIcon.svg" width="20px" />](#readme)
 
-### `yarn test`
+## Deployed Project
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To see this project you could visit https://dspot-test.netlify.app// or you could clone it and run it locally.
+<br> <br><br>
 
-### `yarn build`
+[<img alt="Go to Up icon" align="right" src="src/assets/imgs/goUpIcon.svg" width="20px" />](#readme)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Runing the project locally
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<img alt="Logo" align="right" src="src/assets/imgs/nodeLogo.svg" width="20%" style='margin-left:10px;'/>
+<img alt="Logo" align="right" src="src/assets/imgs/gitHubLogo.svg" width="15%" />
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Before start make sure you have installed this tools:
 
-### `yarn eject`
+- [Node JS](https://nodejs.org/en/) – LTS version or newer.
+- [NPM](https://www.npmjs.com/) – Usually comes with Node.
+- [Git](https://git-scm.com/) – Git CLI.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+To make sure you have this tool installed please open a terminal and type:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```sh
+node --version
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```sh
+npm --version
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+and
 
-## Learn More
+```sh
+git --version
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+expecting something similar to (o newer versions):
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```sh
+node --version
+v14.17.0
 
-### Code Splitting
+npm --version
+6.14.13
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+git version
+git version 2.20.1
+```
 
-### Analyzing the Bundle Size
+Once you have installed `node` `npm` and `git` you can download/install this project:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```sh
+git clone https://github.com/DiegoAWS/frontend-test.git
+cd frontend-test
+npm install
+npm start
+```
 
-### Making a Progressive Web App
+You will see the project in a browser at http://localhost:3000/
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+[<img alt="Go to Up icon" align="right" src="src/assets/imgs/goUpIcon.svg" width="20px" />](#readme)
 
-### Advanced Configuration
+## Testing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Test are availables with [Jest testing Framework](https://jestjs.io/). After running [commands above](#runing-the-project-locally), please run in the project directory:
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```sh
+npm test
+```
