@@ -6,7 +6,7 @@
 - [Runing the project locally](#runing-the-project-locally)
 - [Testing](#testing)
 
-You can see the live project at [this firebase hosting.](https://dspot-test.netlify.app)
+You can see the live project at [this netlify hosting.](https://dspot-test.netlify.app)
 
 Test running proccess, to reproduce test locally follow instructions [here](#testing)
 
